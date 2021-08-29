@@ -81,7 +81,7 @@ class RestaurantTest {
         List itemsSelected = new ArrayList();
         double ordervalue = 0.0;
 
-        ordervalue = calculateOrderValue(itemsSelected);
+        ordervalue = restaurant.calculateOrderValue(itemsSelected);
         assertThat(ordervalue,equalTo(0.0));
     }
 
@@ -94,7 +94,7 @@ class RestaurantTest {
 
         double ordervalue = 0.0;
 
-        ordervalue = calculateOrderValue(itemsSelected);
+        ordervalue = restaurant.calculateOrderValue(itemsSelected);
         assertThat(ordervalue,greaterThan(0.0));
     }
 
