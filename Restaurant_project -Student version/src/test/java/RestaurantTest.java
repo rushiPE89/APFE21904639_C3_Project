@@ -74,7 +74,7 @@ class RestaurantTest {
     //it should accept list of strings
     //method should return order value.
     //if list is empty return 0
-    
+
     @Test
     public void if_list_is_empty_oder_value_returned_zero(){
         List<String> itemsSelected = new ArrayList<String>();

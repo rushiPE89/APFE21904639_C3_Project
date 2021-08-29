@@ -67,4 +67,16 @@ public class Restaurant {
         return name;
     }
 
+    public double calculateOrderValue(List itemsSelected) {
+
+        double orderValue = 0.0;
+
+        for (int i = 0; i < itemsSelected.size(); i++){
+            String itemName = itemsSelected.get(i).toString();
+            Item itemFound = findItemByName(itemName);
+            orderValue = orderValue + itemFound.getPrice();
+        }
+
+        return orderValue;
+    }
 }
