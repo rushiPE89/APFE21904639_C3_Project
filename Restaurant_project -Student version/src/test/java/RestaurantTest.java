@@ -74,28 +74,23 @@ class RestaurantTest {
     //it should accept list of strings
     //method should return order value.
     //if list is empty return 0
-
-
+    
     @Test
     public void if_list_is_empty_oder_value_returned_zero(){
-        List itemsSelected = new ArrayList();
-        double ordervalue = 0.0;
-
-        ordervalue = restaurant.calculateOrderValue(itemsSelected);
-        assertThat(ordervalue,equalTo(0.0));
+        List<String> itemsSelected = new ArrayList<String>();
+        double orderValue = restaurant.calculateOrderValue(itemsSelected);
+        assertThat(orderValue,equalTo(0.0));
     }
 
     @Test
     public void after_finding_item_in_menu_order_value_should_be_returned(){
-        List itemsSelected = new ArrayList();
+        List<String> itemsSelected = new ArrayList<String>();
         itemsSelected.add("Sweet corn soup");
         itemsSelected.add("Vegetable lasagne");
         itemsSelected.add("Sweet corn soup");
 
-        double ordervalue = 0.0;
-
-        ordervalue = restaurant.calculateOrderValue(itemsSelected);
-        assertThat(ordervalue,greaterThan(0.0));
+        double orderValue = restaurant.calculateOrderValue(itemsSelected);
+        assertThat(orderValue,greaterThan(0.0));
     }
 
     @Test
