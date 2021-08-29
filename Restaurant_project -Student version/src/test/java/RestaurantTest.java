@@ -6,8 +6,12 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.Matchers.*;
 
 @ExtendWith(MockitoExtension.class)
 class RestaurantTest {
@@ -65,4 +69,48 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //<<<<<<<<<<<<<<<<<<<<<<<Order Value>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //it should accept list of strings
+    //method should return order value.
+    //if list is empty return 0
+
+
+    @Test
+    public void if_list_is_empty_oder_value_returned_zero(){
+        List itemsSelected = new ArrayList();
+        double ordervalue = 0.0;
+
+        ordervalue = calculateOrderValue(itemsSelected);
+        assertThat(ordervalue,equalTo(0.0));
+    }
+
+    @Test
+    public void after_finding_item_in_menu_order_value_should_be_returned(){
+        List itemsSelected = new ArrayList();
+        itemsSelected.add("Sweet corn soup");
+        itemsSelected.add("Vegetable lasagne");
+        itemsSelected.add("Sweet corn soup");
+
+        double ordervalue = 0.0;
+
+        ordervalue = calculateOrderValue(itemsSelected);
+        assertThat(ordervalue,greaterThan(0.0));
+    }
+
+    @Test
+    public void if_item_exists_in_menu_return_item(){
+        Item item = restaurant.findItemByName("Sweet corn soup");
+        assertNotNull(item);
+    }
+
+    @Test
+    public void if_item_do_not_exists_return_null(){
+        Item item = restaurant.findItemByName("Corn soup");
+        assertNull(item);
+    }
+
+    //<<<<<<<<<<<<<<<<<<<<<<<Order Value>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 }
